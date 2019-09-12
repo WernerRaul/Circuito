@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/idActividad"
+            android:layout_width="80dp"
+            android:layout_height="40dp"
+            android:text="13243"
+            android:textSize="20dp"
+            android:textStyle="normal"
+            android:textColor="#000000"
+            android:background="@drawable/border"
+            android:gravity="center"/>
+
+        <TextView
+            android:id="@+id/anomes"
+            android:layout_width="120dp"
+            android:layout_height="40dp"
+            android:text="2018-01-01"
+            android:textSize="20dp"
+            android:textStyle="normal"
+            android:textColor="#000000"
+            android:background="@drawable/border"
+            android:gravity="center"/>
+
+        <TextView
+            android:id="@+id/horas"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:text="70"
+            android:textSize="20dp"
+            android:textStyle="normal"
+            android:textColor="#000000"
+            android:background="@drawable/border"
+            android:gravity="center"/>
+
+        <TextView
+            android:id="@+id/revisitas"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:text="30"
+            android:textSize="20dp"
+            android:textStyle="normal"
+            android:textColor="#000000"
+            android:background="@drawable/border"
+            android:gravity="center"/>
+
+        <TextView
+            android:id="@+id/estudios"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:text="10"
+            android:textSize="20dp"
+            android:textStyle="normal"
+            android:textColor="#000000"
+            android:background="@drawable/border"
+            android:gravity="center"/>
+
+        <TextView
+            android:id="@+id/auxiliar"
+            android:layout_width="60dp"
+            android:layout_height="40dp"
+            android:text="true"
+            android:textSize="20dp"
+            android:textStyle="normal"
+            android:textColor="#000000"
+            android:background="@drawable/border"
+            android:gravity="center"/>
+
+    </LinearLayout>
+
+</LinearLayout>

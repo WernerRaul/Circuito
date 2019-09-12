@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragments.frgConsPromedios">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="11dp"
+            android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/lblHoras"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="horas"
+                    android:textSize="20dp"
+                    android:textStyle="normal"
+                    android:textColor="#000000"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="11dp"
+                android:background="@color/colorPrimary" />
+
+                <TextView
+                    android:id="@+id/lblRevisitas"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="revisi"
+                    android:textSize="20dp"
+                    android:textStyle="normal"
+                    android:textColor="#000000"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="11dp"
+                android:background="@color/colorPrimary" />
+
+                <TextView
+                    android:id="@+id/lblEstudios"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="estud"
+                    android:textSize="20dp"
+                    android:textStyle="normal"
+                    android:textColor="#000000"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="11dp"
+                android:background="@color/colorPrimary" />
+
+                <TextView
+                    android:id="@+id/lblPublicadores"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="public"
+                    android:textSize="20dp"
+                    android:textStyle="normal"
+                    android:textColor="#000000"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="11dp"
+                android:background="@color/colorPrimary" />
+
+                <TextView
+                    android:id="@+id/lblPrecRegulares"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="regula"
+                    android:textSize="20dp"
+                    android:textStyle="normal"
+                    android:textColor="#000000"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="11dp"
+                android:background="@color/colorPrimary" />
+
+                <TextView
+                    android:id="@+id/lblPrecAuxiliares"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="auxilia"
+                    android:textSize="20dp"
+                    android:textStyle="normal"
+                    android:textColor="#000000"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="11dp"
+                android:background="@color/colorPrimary" />
+
+                <TextView
+                    android:id="@+id/lblReuEntreSemana"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="reuese"
+                    android:textSize="20dp"
+                    android:textStyle="normal"
+                    android:textColor="#000000"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="11dp"
+                android:background="@color/colorPrimary" />
+
+                <TextView
+                    android:id="@+id/lblReuFinSemana"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="reufse"
+                    android:textSize="20dp"
+                    android:textStyle="normal"
+                    android:textColor="#000000"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="11dp"
+                android:background="@color/colorPrimary" />
+
+                <TextView
+                    android:id="@+id/lblTerritorios"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="territor"
+                    android:textSize="20dp"
+                    android:textStyle="normal"
+                    android:textColor="#000000"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="11dp"
+                android:background="@color/colorPrimary" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</FrameLayout>

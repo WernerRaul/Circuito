@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nombre: "
+            android:textSize="20dp"
+            android:textStyle="normal"
+            android:textColor="#000000"/>
+
+        <TextView
+            android:id="@+id/nombreRegular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Raúl Balbuena Baygorria"
+            android:textSize="20dp"
+            android:textStyle="normal" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Promedio Horas: "
+            android:textSize="20dp"
+            android:textStyle="normal"
+            android:textColor="#000000"/>
+
+        <TextView
+            android:id="@+id/horasRegular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="20"
+            android:textSize="20dp"
+            android:textStyle="normal" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:text="Revi: "
+            android:textSize="20dp"
+            android:textStyle="normal"
+            android:textColor="#000000"/>
+
+        <TextView
+            android:id="@+id/reviRegular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="10"
+            android:textSize="20dp"
+            android:textStyle="normal" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:text="Est: "
+            android:textSize="20dp"
+            android:textStyle="normal"
+            android:textColor="#000000"/>
+
+        <TextView
+            android:id="@+id/estRegular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="12"
+            android:textSize="20dp"
+            android:textStyle="normal" />
+
+    </LinearLayout>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_alignBottom="@+id/linearInformacion"
+        android:layout_marginTop="11dp"
+        android:background="@color/colorPrimary" />
+
+</LinearLayout>
