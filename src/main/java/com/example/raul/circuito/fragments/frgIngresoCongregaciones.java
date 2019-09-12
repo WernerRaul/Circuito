@@ -96,7 +96,7 @@ public class frgIngresoCongregaciones extends Fragment {
     }
 
     private void  ejecutar() {
-        ConexionSQLiteHelper conn=new ConexionSQLiteHelper(getContext(),"ICA-04", null,1);
+        ConexionSQLiteHelper conn=new ConexionSQLiteHelper(getContext(),"DATOS", null,1);
         SQLiteDatabase db=conn.getWritableDatabase();
         try {
             ContentValues values=new ContentValues();

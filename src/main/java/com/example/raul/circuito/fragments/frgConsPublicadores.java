@@ -88,7 +88,7 @@ public class frgConsPublicadores extends Fragment {
                              Bundle savedInstanceState) {
 
         View vista = inflater.inflate(R.layout.fragment_frg_cons_publicadores,container,false);
-        conn = new ConexionSQLiteHelper(getContext(), "ICA-04", null, 1);
+        conn = new ConexionSQLiteHelper(getContext(), "DATOS", null, 1);
         listaPublicadores = new ArrayList<>();
 
         recyclerConsPublicadores = vista.findViewById(R.id.RecyclerConsPubId);

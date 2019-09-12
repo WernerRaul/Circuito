@@ -88,7 +88,7 @@ public class frgPublicadorNoActualizado extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View vista= inflater.inflate(R.layout.fragment_frg_publicador_no_actualizado, container, false);
-        conn = new ConexionSQLiteHelper(getContext(), "ICA-04", null, 1);
+        conn = new ConexionSQLiteHelper(getContext(), "DATOS", null, 1);
         spnCongregacion = vista.findViewById(R.id.spnCongregacion);
         consultarlistaCongregaciones(); //llamar método
         ArrayAdapter<CharSequence> adaptador = new ArrayAdapter

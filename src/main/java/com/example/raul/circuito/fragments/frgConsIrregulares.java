@@ -111,7 +111,7 @@ public class frgConsIrregulares extends Fragment {
     }
 
     private void llenarlista() {
-        conn = new ConexionSQLiteHelper(getContext(), "ICA-04", null, 1);
+        conn = new ConexionSQLiteHelper(getContext(), "DATOS", null, 1);
         SQLiteDatabase db = conn.getReadableDatabase();
         SQLiteQueryBuilder builder = new SQLiteQueryBuilder();
 

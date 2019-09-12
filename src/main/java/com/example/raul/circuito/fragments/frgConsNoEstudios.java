@@ -82,7 +82,7 @@ public class frgConsNoEstudios extends Fragment {
                              Bundle savedInstanceState) {
         View vista = inflater.inflate(R.layout.fragment_frg_cons_no_estudios, container, false);
 
-        conn = new ConexionSQLiteHelper(getContext(), "ICA-04", null, 1);
+        conn = new ConexionSQLiteHelper(getContext(), "DATOS", null, 1);
         listaNoEstudios=new ArrayList<>();
 
         recyclerConsNoEstudios = vista.findViewById(R.id.RecyclerConsNoRevEst);
@@ -109,7 +109,7 @@ public class frgConsNoEstudios extends Fragment {
     }
 
     private void llenarlista() {
-        conn = new ConexionSQLiteHelper(getContext(), "ICA-04", null, 1);
+        conn = new ConexionSQLiteHelper(getContext(), "DATOS", null, 1);
         SQLiteDatabase db = conn.getReadableDatabase();
         SQLiteQueryBuilder builder = new SQLiteQueryBuilder();
 

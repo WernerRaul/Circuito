@@ -101,7 +101,7 @@ public class frgIngresoAsistenciaReuniones extends Fragment {
         // Inflate the layout for this fragment
         View vista = inflater.inflate(R.layout.fragment_frg_ingreso_asistencia_reuniones, container, false);
 
-        conn = new ConexionSQLiteHelper(getContext(), "ICA-04", null, 1);
+        conn = new ConexionSQLiteHelper(getContext(), "DATOS", null, 1);
 
         edtFecha = vista.findViewById(R.id.edtFecha);
         edtReunionEntreSemana = vista.findViewById(R.id.edtReunionEntreSemana);
@@ -151,7 +151,7 @@ public class frgIngresoAsistenciaReuniones extends Fragment {
     }
 
     private void ejecutar(){
-        conn = new ConexionSQLiteHelper(getContext(), "ICA-04", null, 1);
+        conn = new ConexionSQLiteHelper(getContext(), "DATOS", null, 1);
         SQLiteDatabase db=conn.getWritableDatabase();
         String texto=null;
 

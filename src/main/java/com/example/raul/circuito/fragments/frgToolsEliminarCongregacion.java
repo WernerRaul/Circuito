@@ -84,7 +84,7 @@ public class frgToolsEliminarCongregacion extends Fragment {
         // Inflate the layout for this fragment
         View vista = inflater.inflate(R.layout.fragment_frg_tools_eliminar_congregacion, container, false);
 
-        conn = new ConexionSQLiteHelper(getContext(), "ICA-04", null, 1);
+        conn = new ConexionSQLiteHelper(getContext(), "DATOS", null, 1);
         listaCongregaciones=new ArrayList<>();
 
         recyclerElimCongregaciones = vista.findViewById(R.id.RecyclerElimCongId);

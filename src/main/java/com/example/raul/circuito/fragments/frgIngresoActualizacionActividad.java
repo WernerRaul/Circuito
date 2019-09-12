@@ -104,7 +104,7 @@ public class frgIngresoActualizacionActividad extends Fragment {
         final View vista = inflater.inflate(R.layout.fragment_frg_ingreso_actualizacion_actividad, container, false);
 
         listaActividad = new ArrayList<>();
-        conn = new ConexionSQLiteHelper(getContext(), "ICA-04", null, 1);
+        conn = new ConexionSQLiteHelper(getContext(), "DATOS", null, 1);
         nombreCongMap = new HashMap<String, Integer>();
         nombrePubMap = new HashMap<String, Integer>();
 
@@ -277,7 +277,7 @@ public class frgIngresoActualizacionActividad extends Fragment {
     }
 
     private void llenarLista() {
-        conn = new ConexionSQLiteHelper(getContext(), "ICA-04", null, 1);
+        conn = new ConexionSQLiteHelper(getContext(), "DATOS", null, 1);
         SQLiteDatabase db = conn.getReadableDatabase();
         Cursor cursor = db.rawQuery("SELECT ID_Actividad, AñoMes, Horas, Revisitas, Estudios, PAuxiliar " +
                 "FROM tbl_PUBLICADORES, tbl_ACTIVIDAD " +

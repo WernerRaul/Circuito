@@ -93,7 +93,7 @@ public class frgConsPromedios extends Fragment {
         lblReuFinSemana = vista.findViewById(R.id.lblReuFinSemana);
         lblTerritorios = vista.findViewById(R.id.lblTerritorios);
 
-        conn = new ConexionSQLiteHelper(getContext(), "ICA-04", null, 1);
+        conn = new ConexionSQLiteHelper(getContext(), "DATOS", null, 1);
 
         GlobalClass globalClass = (GlobalClass) getContext().getApplicationContext();
 

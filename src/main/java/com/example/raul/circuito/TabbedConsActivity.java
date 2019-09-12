@@ -72,7 +72,7 @@ public class TabbedConsActivity extends AppCompatActivity implements
 
         /*Abrimos la base de datos para saber que congregación ha sido cliqueda
         * esa información será presentada en el toolbar mediante la variable mCong*/
-        conn = new ConexionSQLiteHelper(getApplicationContext(), "ICA-04", null, 1);
+        conn = new ConexionSQLiteHelper(getApplicationContext(), "DATOS", null, 1);
         GlobalClass globalClass = (GlobalClass) getApplicationContext();
         SQLiteDatabase db=conn.getReadableDatabase();
         Cursor cursor = db.rawQuery("SELECT * FROM "+ Utilidades.TABLA_CONGREGACIONES

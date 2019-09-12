@@ -84,7 +84,7 @@ public class frgConsNoRevisitas extends Fragment {
                              Bundle savedInstanceState) {
         View vista = inflater.inflate(R.layout.fragment_frg_cons_no_revisitas, container, false);
 
-        conn = new ConexionSQLiteHelper(getContext(), "ICA-04", null, 1);
+        conn = new ConexionSQLiteHelper(getContext(), "DATOS", null, 1);
         listaNoRevisitas=new ArrayList<>();
 
         recyclerConsNoRevisitas = vista.findViewById(R.id.RecyclerConsNoRevEst);
@@ -112,7 +112,7 @@ public class frgConsNoRevisitas extends Fragment {
 
     private void llenarlista() {
 
-        conn = new ConexionSQLiteHelper(getContext(), "ICA-04", null, 1);
+        conn = new ConexionSQLiteHelper(getContext(), "DATOS", null, 1);
         SQLiteDatabase db = conn.getReadableDatabase();
         SQLiteQueryBuilder builder = new SQLiteQueryBuilder();
 

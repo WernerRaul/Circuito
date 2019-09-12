@@ -41,7 +41,7 @@ public class GraficoActivity extends AppCompatActivity {
         GlobalClass globalClass = (GlobalClass) getApplicationContext();
 
         GraficoActivity.this.setTitle((CharSequence) globalClass.getNombrePublicador());
-        conn = new ConexionSQLiteHelper(getApplicationContext(), "ICA-04", null, 1);
+        conn = new ConexionSQLiteHelper(getApplicationContext(), "DATOS", null, 1);
         SQLiteDatabase db = conn.getReadableDatabase();
         SQLiteQueryBuilder builder = new SQLiteQueryBuilder();
 
