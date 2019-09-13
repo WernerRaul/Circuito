@@ -132,7 +132,10 @@ public class frgIngresoAsistenciaReuniones extends Fragment {
         btnIngresar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (edtFecha.getText().toString().equals("") || edtReunionEntreSemana.getText().toString().equals("") || edtReunionFinSemana.getText().toString().equals("")) {
+                if ((spnCongregacion.getSelectedItemId() == 0) ||
+                        edtFecha.getText().toString().equals("") ||
+                        edtReunionEntreSemana.getText().toString().equals("") ||
+                        edtReunionFinSemana.getText().toString().equals("")) {
                     Toast.makeText(getContext(),"Relene los campos arriba indicados",Toast.LENGTH_LONG).show();
                 } else {
                     ejecutar();
