@@ -1,5 +1,6 @@
 package com.example.raul.circuito.fragments;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -11,6 +12,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 
 import com.example.raul.circuito.Adapters.AdapterDatosEstablecerFechaVisita;
 import com.example.raul.circuito.Clases.ActividadVo;
@@ -108,7 +111,20 @@ public class frgToolsEstablacerFechaVisita extends Fragment {
 
         AdapterDatosEstablecerFechaVisita adapter = new AdapterDatosEstablecerFechaVisita(listaCongregacion);
         adapter.notifyDataSetChanged();
+        adapter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Dialog customDialog = new Dialog(getContext(),R.style.Theme_Dialog_Translucent);
+                customDialog.setContentView(R.layout.input_dialog_1); //seteamos del diálogo personalizado
+                EditText fechaObservada = customDialog.findViewById(R.id.fechaObservada);
+                Button btnOK = customDialog.findViewById(R.id.btnOk);
+                Button btnCancel = customDialog.findViewById(R.id.btnCancel);
+                customDialog.show();
+
+            }
+        });
         recyclerView.setAdapter(adapter);
+
         return vista;
     }
 
