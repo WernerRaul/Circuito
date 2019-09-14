@@ -19,10 +19,12 @@ import android.view.ViewGroup;
 
 import com.example.raul.circuito.fragments.frgToolsEliminarCongregacion;
 import com.example.raul.circuito.fragments.frgToolsEliminarPublicador;
+import com.example.raul.circuito.fragments.frgToolsEstablacerFechaVisita;
 
 public class TabbedToolsActivity extends AppCompatActivity implements
         frgToolsEliminarCongregacion.OnFragmentInteractionListener,
-        frgToolsEliminarPublicador.OnFragmentInteractionListener{
+        frgToolsEliminarPublicador.OnFragmentInteractionListener,
+        frgToolsEstablacerFechaVisita.OnFragmentInteractionListener{
 
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -133,9 +135,11 @@ public class TabbedToolsActivity extends AppCompatActivity implements
         public static Fragment newInstance(int sectionNumber) {
             Fragment fragment=null;
             switch (sectionNumber){
-                case 1:fragment=new frgToolsEliminarCongregacion();
+                case 1:fragment=new frgToolsEstablacerFechaVisita();
                     break;
-                case 2:fragment=new frgToolsEliminarPublicador();
+                case 2:fragment=new frgToolsEliminarCongregacion();
+                    break;
+                case 3:fragment=new frgToolsEliminarPublicador();
                     break;
             }
             return fragment;
@@ -169,7 +173,7 @@ public class TabbedToolsActivity extends AppCompatActivity implements
         @Override
         public int getCount() {
             // Show 3 total pages.
-            return 2;
+            return 3;
         }
     }
 }

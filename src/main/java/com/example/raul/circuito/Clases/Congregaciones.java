@@ -1,7 +1,7 @@
 package com.example.raul.circuito.Clases;
 
 public class Congregaciones {
-    private Integer id_congregacion;
+    private String id_congregacion;
     private String nombre;
     private String seccion;
     private String observaciones;
@@ -18,11 +18,11 @@ public class Congregaciones {
 
     }
 
-    public Integer getId_congregacion() {
+    public String getId_congregacion() {
         return id_congregacion;
     }
 
-    public void setId_congregacion(Integer id_congregacion) {
+    public void setId_congregacion(String  id_congregacion) {
         this.id_congregacion = id_congregacion;
     }
 
