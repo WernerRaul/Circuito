@@ -1,5 +1,7 @@
 package com.example.raul.circuito.fragments;
 
+import android.app.Dialog;
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -13,6 +15,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -120,6 +124,12 @@ public class frgIngresoActualizarAsistencia extends Fragment {
             }
         });
 
+        adapter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
         return vista;
     }
 
