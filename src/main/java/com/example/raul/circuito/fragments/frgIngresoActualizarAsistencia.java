@@ -1,14 +1,26 @@
 package com.example.raul.circuito.fragments;
 
 import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
+import android.widget.Toast;
 
+import com.example.raul.circuito.Clases.ActualizarAsistenciaVo;
+import com.example.raul.circuito.Clases.ConexionSQLiteHelper;
+import com.example.raul.circuito.Clases.Congregaciones;
 import com.example.raul.circuito.R;
+import com.example.raul.circuito.Utilidades;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -29,6 +41,12 @@ public class frgIngresoActualizarAsistencia extends Fragment {
     private String mParam2;
 
     private OnFragmentInteractionListener mListener;
+
+    Spinner spnCongregacion;
+    ConexionSQLiteHelper conn;
+    ArrayList<Congregaciones> congregacionesList;
+    ArrayList<String> listaCongregaciones;
+    ArrayList<ActualizarAsistenciaVo> listaAsistencia;
 
     public frgIngresoActualizarAsistencia() {
         // Required empty public constructor
@@ -65,10 +83,87 @@ public class frgIngresoActualizarAsistencia extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_frg_ingreso_actualizar_asistencia, container, false);
+        View vista = inflater.inflate(R.layout.fragment_frg_ingreso_actualizar_asistencia, container, false);
+
+        conn = new ConexionSQLiteHelper(getContext(), "DATOS", null, 1);
+
+        listaAsistencia = new ArrayList<>();
+
+        spnCongregacion = vista.findViewById(R.id.spnCongregacionActualizar);//set al spinner
+        consultarlistaCongregaciones(); //llamar al método comenzamos a poblar el spinner Congregaciones
+        ArrayAdapter<CharSequence> adaptador = new ArrayAdapter
+                (getContext(),android.R.layout.simple_spinner_item,listaCongregaciones);
+        spnCongregacion.setAdapter(adaptador);
+
+        spnCongregacion.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                Toast.makeText(getContext(),spnCongregacion.getSelectedItem().toString(), Toast.LENGTH_LONG).show();
+                llenarLista();
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+
+
+        return vista;
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
+    private void consultarlistaCongregaciones() {
+        SQLiteDatabase db = conn.getReadableDatabase();
+        Congregaciones congregacion = null;
+
+        congregacionesList = new ArrayList<Congregaciones>();
+        Cursor cursor = db.rawQuery("SELECT * FROM " + Utilidades.TABLA_CONGREGACIONES, null);
+        while (cursor.moveToNext()) {
+            congregacion = new Congregaciones();
+            congregacion.setnombre(cursor.getString(1)); //Ingresar nombre de la congregacion
+            congregacionesList.add(congregacion);
+        }
+        db.close();
+        obtenerlista(); //llamar método
+
+    }
+
+    private void obtenerlista() {
+        listaCongregaciones = new ArrayList<String>();
+        listaCongregaciones.add("Seleccione");
+
+        for (int i = 0; i < congregacionesList.size(); i++) {
+            listaCongregaciones.add(congregacionesList.get(i).getnombre());
+        }
+    }
+
+    private void llenarLista() {
+        conn = new ConexionSQLiteHelper(getContext(), "DATOS", null, 1);
+        SQLiteDatabase db = conn.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT ID_Mes, Mes, ReuEntreSemana, ReuFinSemana, Nombre " +
+                "FROM tbl_REUNIONES, tbl_CONGREGACIONES " +
+                "where tbl_CONGREGACIONES.ID_Congregacion = tbl_REUNIONES.ID_Congregacion " +
+                "and tbl_CONGREGACIONES.Nombre = '" + spnCongregacion.getSelectedItem().toString() + "'", null);
+
+        listaAsistencia.clear();
+
+        while (cursor.moveToNext()) {
+            ActualizarAsistenciaVo asistenciaVo = new ActualizarAsistenciaVo();
+            asistenciaVo.setID_Mes(cursor.getString(0));
+            asistenciaVo.setMes(cursor.getString(1));
+            asistenciaVo.setReuEntreSemana(cursor.getString(2));
+            asistenciaVo.setReuFinSemana(cursor.getString(3));
+
+            listaAsistencia.add(asistenciaVo);
+        }
+        cursor.close();
+        db.close();
+        conn.close();
+
+    }
+        // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {
             mListener.onFragmentInteraction(uri);
