@@ -6,6 +6,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +16,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.raul.circuito.Adapters.AdapterDatosActualizacionAsistencia;
 import com.example.raul.circuito.Clases.ActualizarAsistenciaVo;
 import com.example.raul.circuito.Clases.ConexionSQLiteHelper;
 import com.example.raul.circuito.Clases.Congregaciones;
@@ -47,6 +50,8 @@ public class frgIngresoActualizarAsistencia extends Fragment {
     ArrayList<Congregaciones> congregacionesList;
     ArrayList<String> listaCongregaciones;
     ArrayList<ActualizarAsistenciaVo> listaAsistencia;
+    RecyclerView recyclerAsistencia;
+
 
     public frgIngresoActualizarAsistencia() {
         // Required empty public constructor
@@ -95,11 +100,17 @@ public class frgIngresoActualizarAsistencia extends Fragment {
                 (getContext(),android.R.layout.simple_spinner_item,listaCongregaciones);
         spnCongregacion.setAdapter(adaptador);
 
+        recyclerAsistencia = vista.findViewById(R.id.RecyclerActualizacionAsistencia);
+        recyclerAsistencia.setLayoutManager(new LinearLayoutManager(getContext()));
+        final AdapterDatosActualizacionAsistencia adapter = new AdapterDatosActualizacionAsistencia(listaAsistencia);
+
         spnCongregacion.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 Toast.makeText(getContext(),spnCongregacion.getSelectedItem().toString(), Toast.LENGTH_LONG).show();
                 llenarLista();
+                adapter.notifyDataSetChanged();
+                recyclerAsistencia.setAdapter(adapter);
 
             }
 
@@ -108,9 +119,6 @@ public class frgIngresoActualizarAsistencia extends Fragment {
 
             }
         });
-
-
-
         return vista;
     }
 
