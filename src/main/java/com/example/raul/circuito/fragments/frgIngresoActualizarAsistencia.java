@@ -119,6 +119,7 @@ public class frgIngresoActualizarAsistencia extends Fragment {
 
             }
         });
+
         return vista;
     }
 
