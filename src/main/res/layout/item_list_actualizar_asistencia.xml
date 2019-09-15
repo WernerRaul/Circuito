@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/idAsistencia"
+            android:layout_width="50dp"
+            android:layout_height="80dp"
+            android:text="1000"
+            android:textSize="20dp"
+            android:textStyle="normal"
+            android:textColor="#000000"
+            android:background="@drawable/border"
+            android:gravity="center"/>
+
+        <TextView
+            android:id="@+id/mes"
+            android:layout_width="110dp"
+            android:layout_height="80dp"
+            android:text="2018-01-01"
+            android:textSize="20dp"
+            android:textStyle="normal"
+            android:textColor="#000000"
+            android:background="@drawable/border"
+            android:gravity="center"/>
+
+        <TextView
+            android:id="@+id/REntreSemana"
+            android:layout_width="150dp"
+            android:layout_height="80dp"
+            android:text="70"
+            android:textSize="20dp"
+            android:textStyle="normal"
+            android:textColor="#000000"
+            android:background="@drawable/border"
+            android:gravity="center"/>
+
+        <TextView
+            android:id="@+id/RFinSemana"
+            android:layout_width="150dp"
+            android:layout_height="80dp"
+            android:text="30"
+            android:textSize="20dp"
+            android:textStyle="normal"
+            android:textColor="#000000"
+            android:background="@drawable/border"
+            android:gravity="center"/>
+
+    </LinearLayout>
+
+</LinearLayout>

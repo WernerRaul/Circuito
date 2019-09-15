@@ -20,6 +20,7 @@ import android.view.ViewGroup;
 import com.example.raul.circuito.fragments.frgIngresoActividadPublicador;
 import com.example.raul.circuito.fragments.frgIngresoActualizacionActividad;
 import com.example.raul.circuito.fragments.frgIngresoActualizacionPublicador;
+import com.example.raul.circuito.fragments.frgIngresoActualizarAsistencia;
 import com.example.raul.circuito.fragments.frgIngresoAsistenciaReuniones;
 import com.example.raul.circuito.fragments.frgIngresoCongregaciones;
 import com.example.raul.circuito.fragments.frgIngresoNuevoPublicador;
@@ -28,6 +29,7 @@ import com.example.raul.circuito.fragments.frgPublicadorNoActualizado;
 public class TabbedIngresoActivity extends AppCompatActivity implements
         frgIngresoCongregaciones.OnFragmentInteractionListener,
         frgIngresoAsistenciaReuniones.OnFragmentInteractionListener,
+        frgIngresoActualizarAsistencia.OnFragmentInteractionListener,
         frgIngresoActividadPublicador.OnFragmentInteractionListener,
         frgIngresoActualizacionActividad.OnFragmentInteractionListener,
         frgIngresoActualizacionPublicador.OnFragmentInteractionListener,
@@ -142,15 +144,17 @@ public class TabbedIngresoActivity extends AppCompatActivity implements
                     break;
                 case 2:fragment=new frgIngresoAsistenciaReuniones();
                     break;
-                case 3:fragment=new frgIngresoNuevoPublicador();
+                case 3:fragment=new frgIngresoActualizarAsistencia();
                     break;
-                case 4:fragment=new frgIngresoActualizacionPublicador();
+                case 4:fragment=new frgIngresoNuevoPublicador();
                     break;
-                case 5:fragment=new frgIngresoActividadPublicador();
+                case 5:fragment=new frgIngresoActualizacionPublicador();
                     break;
-                case 6:fragment=new frgIngresoActualizacionActividad();
+                case 6:fragment=new frgIngresoActividadPublicador();
                     break;
-                case 7:fragment=new frgPublicadorNoActualizado();
+                case 7:fragment=new frgIngresoActualizacionActividad();
+                    break;
+                case 8:fragment=new frgPublicadorNoActualizado();
             }
             return fragment;
         }
@@ -183,7 +187,7 @@ public class TabbedIngresoActivity extends AppCompatActivity implements
         @Override
         public int getCount() {
             // Show 7 total pages.
-            return 7;
+            return 8;
         }
     }
 }
