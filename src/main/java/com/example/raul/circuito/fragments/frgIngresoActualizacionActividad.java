@@ -111,8 +111,6 @@ public class frgIngresoActualizacionActividad extends Fragment {
         recyclerActividad = vista.findViewById(R.id.RecyclerActualizacionActividad);
         recyclerActividad.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        spnPublicador = vista.findViewById(R.id.spnPublicador7);
-
         //adaptador para recyclerview
         final AdapterDatosActualizacionActividad adapter = new AdapterDatosActualizacionActividad(listaActividad);
 
@@ -253,6 +251,7 @@ public class frgIngresoActualizacionActividad extends Fragment {
             }
         });
 
+        spnPublicador = vista.findViewById(R.id.spnPublicador7);
         spnPublicador.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {

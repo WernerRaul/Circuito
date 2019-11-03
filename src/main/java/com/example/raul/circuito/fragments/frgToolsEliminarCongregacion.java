@@ -93,7 +93,6 @@ public class frgToolsEliminarCongregacion extends Fragment {
         llenarLista();
 
         final AdapterDatosCongregaciones adapter = new AdapterDatosCongregaciones(listaCongregaciones);
-
         adapter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View v) {

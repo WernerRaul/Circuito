@@ -1,6 +1,8 @@
 package com.example.raul.circuito.fragments;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
@@ -14,6 +16,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.example.raul.circuito.Adapters.AdapterDatosCongregaciones;
 import com.example.raul.circuito.Clases.ConexionSQLiteHelper;
@@ -52,7 +55,7 @@ public class frgToolsEliminarPublicador extends Fragment {
     Map<String,Integer> nombreCongMap;
     RecyclerView recyclerConsPublicadores;
     ArrayList<String> listaPublicadores;
-
+//    AdapterDatosCongregaciones adapter;
 
     public frgToolsEliminarPublicador() {
         // Required empty public constructor
@@ -94,19 +97,60 @@ public class frgToolsEliminarPublicador extends Fragment {
         conn = new ConexionSQLiteHelper(getContext(), "DATOS", null, 1);
         nombreCongMap = new HashMap<String, Integer>();
 
-        consultarlistaCongregaciones(); //llamar al método comenzamos a poblar el spinner Congregaciones
+        listaPublicadores = new ArrayList<>();
+        recyclerConsPublicadores = vista.findViewById(R.id.RecyclerConsPubId1);
+        recyclerConsPublicadores.setLayoutManager(new LinearLayoutManager(getContext()));
 
         spnCongregacion = vista.findViewById(R.id.spnCongregacion8);
+        consultarlistaCongregaciones(); //llamar al método comenzamos a poblar el spinner Congregaciones
         ArrayAdapter<CharSequence> adaptador = new ArrayAdapter
                 (getContext(),android.R.layout.simple_spinner_item,listaCongregaciones);
         spnCongregacion.setAdapter(adaptador);
-        listaPublicadores = new ArrayList<>();
 
         spnCongregacion.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 llenarlista();
 
+                final AdapterDatosCongregaciones adapter = new AdapterDatosCongregaciones(listaPublicadores);
+                recyclerConsPublicadores.setAdapter(adapter);
+
+                adapter.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(final View v) {
+                        final AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                        String[] singleChoiceItems = getResources().getStringArray(R.array.dialog_single_choice_array); //Opciones en radiobutton
+
+                        builder.setTitle("¡¡¡ALERTA!!!");
+                        builder.setMessage(" ¿Está seguro que quiere eliminar al Publicador "
+                                +listaPublicadores.get(recyclerConsPublicadores.getChildAdapterPosition(v))
+                                + " con toda su actividad relacionada?");
+                        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                SQLiteDatabase db=conn.getWritableDatabase();
+                                db.execSQL("PRAGMA foreign_keys = ON;"); //habilitar borrado en cascada
+                                db.execSQL("DELETE FROM " + Utilidades.TABLA_PUBLICADORES + " WHERE "
+                                        + Utilidades.CAMPO_Nombre_Publicador + " = '"
+                                        + listaPublicadores.get(recyclerConsPublicadores.getChildAdapterPosition(v)) + "'");
+                                db.close();
+
+                                //actualizar recycler
+                                Toast.makeText(getContext(),"Publicador " + listaPublicadores.get(recyclerConsPublicadores.getChildAdapterPosition(v)) + " REMOVIDO!!!", Toast.LENGTH_LONG).show();
+
+                                listaPublicadores.remove(recyclerConsPublicadores.getChildAdapterPosition(v));
+                                adapter.notifyItemRemoved(recyclerConsPublicadores.getChildAdapterPosition(v));
+                            }
+                        });
+                        builder.setNegativeButton("CANCELAR", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+
+                            }
+                        });
+                        builder.show();
+                    }
+                });
             }
 
             @Override
@@ -114,53 +158,6 @@ public class frgToolsEliminarPublicador extends Fragment {
 
             }
         });
-
-        recyclerConsPublicadores = vista.findViewById(R.id.RecyclerConsPubId1);
-        recyclerConsPublicadores.setLayoutManager(new LinearLayoutManager(getContext()));
-//        AdapterDatosCongregaciones adapter = new AdapterDatosCongregaciones(listaPublicadores);
-//        recyclerConsPublicadores.setAdapter(adapter);
-
-
-/*
-
-        adapter.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(final View v) {
-                final AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-                String[] singleChoiceItems = getResources().getStringArray(R.array.dialog_single_choice_array); //Opciones en radiobutton
-
-                builder.setTitle("¡¡¡ALERTA!!!");
-                builder.setMessage(" ¿Está seguro que quiere eliminar al Publicador "
-                        +listaCongregaciones.get(recyclerConsPublicadores.getChildAdapterPosition(v))
-                        + " con toda su actividad relacionada?");
-                builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        SQLiteDatabase db=conn.getWritableDatabase();
-                        db.execSQL("PRAGMA foreign_keys = ON;"); //habilitar borrado en cascada
-                        db.execSQL("DELETE FROM " + Utilidades.TABLA_PUBLICADORES + " WHERE "
-                                + Utilidades.CAMPO_Nombre_Publicador + " = '"
-                                + listaCongregaciones.get(recyclerConsPublicadores.getChildAdapterPosition(v)) + "'");
-                        db.close();
-
-                        //actualizar recycler
-                        Toast.makeText(getContext(),"Publicador " + listaCongregaciones.get(recyclerConsPublicadores.getChildAdapterPosition(v)) + " REMOVIDO!!!", Toast.LENGTH_LONG).show();
-
-                        listaCongregaciones.remove(recyclerConsPublicadores.getChildAdapterPosition(v));
-                        adapter.notifyItemRemoved(recyclerConsPublicadores.getChildAdapterPosition(v));
-                        recyclerConsPublicadores.setAdapter(adapter);
-                    }
-                });
-                builder.setNegativeButton("CANCELAR", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-
-                    }
-                });
-            }
-        });
-*/
-
         return vista;
     }
 
@@ -178,9 +175,6 @@ public class frgToolsEliminarPublicador extends Fragment {
         cursor.close();
         db.close();
         conn.close();
-        AdapterDatosCongregaciones adapter = new AdapterDatosCongregaciones(listaPublicadores);
-        recyclerConsPublicadores.setAdapter(adapter);
-
     }
 
     private void consultarlistaCongregaciones() {
@@ -196,7 +190,6 @@ public class frgToolsEliminarPublicador extends Fragment {
         }
         db.close();
         obtenerlista(); //llamar método
-
     }
 
     private void obtenerlista() {
@@ -205,7 +198,6 @@ public class frgToolsEliminarPublicador extends Fragment {
         for (int i = 0; i < congregacionesList.size(); i++) {
             listaCongregaciones.add(congregacionesList.get(i).getnombre());
         }
-
     }
 
     // TODO: Rename method, update argument and hook method into UI event
