@@ -127,7 +127,39 @@ public class frgIngresoActualizarAsistencia extends Fragment {
         adapter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                final Dialog customDialog = new Dialog(frgIngresoActualizarAsistencia.this.getContext(), R.style.Theme_Dialog_Translucent);
+                customDialog.setContentView(R.layout.input_dialog_2);
+                EditText ReuEntreSemana = (EditText) customDialog.findViewById(R.id.RESemana);
+                EditText ReuFinSemana = (EditText) customDialog.findViewById(R.id.RFSemana);
+                Button btnOK = (Button) customDialog.findViewById(R.id.btnOk);
+                Button btnCancel = (Button) customDialog.findViewById(R.id.btnCancel);
+                ReuEntreSemana.setText("a");
+                ReuEntreSemana.setText((listaAsistencia.get(recyclerAsistencia.getChildAdapterPosition(view))).getReuEntreSemana());
+                ReuFinSemana.setText((listaAsistencia.get(recyclerAsistencia.getChildAdapterPosition(view))).getReuFinSemana());
+                final EditText editText = ReuEntreSemana;
+                final EditText editText2 = ReuFinSemana;
+                final View view2 = view;
+                btnOK.setOnClickListener(new View.OnClickListener() {
+                    public void onClick(View viewOK) {
+                        ContentValues values = new ContentValues();
+                        values.put(Utilidades.CAMPO_ReuEntreSemana, String.valueOf(editText.getText()));
+                        values.put(Utilidades.CAMPO_ReuFinSemana, String.valueOf(editText2.getText()));
+                        SQLiteDatabase db = frgIngresoActualizarAsistencia.this.conn.getWritableDatabase();
+                        db.update(Utilidades.TABLA_REUNIONES, values, "ID_Mes=?", new String[]{String.valueOf(((ActualizarAsistenciaVo) frgIngresoActualizarAsistencia.this.listaAsistencia.get(frgIngresoActualizarAsistencia.this.recyclerAsistencia.getChildAdapterPosition(view2))).getID_Mes())});
+                        db.close();
+                        frgIngresoActualizarAsistencia.this.conn.close();
+                        ((ActualizarAsistenciaVo) frgIngresoActualizarAsistencia.this.listaAsistencia.get(frgIngresoActualizarAsistencia.this.recyclerAsistencia.getChildAdapterPosition(view2))).setReuEntreSemana(editText.getText().toString());
+                        ((ActualizarAsistenciaVo) frgIngresoActualizarAsistencia.this.listaAsistencia.get(frgIngresoActualizarAsistencia.this.recyclerAsistencia.getChildAdapterPosition(view2))).setReuFinSemana(editText2.getText().toString());
+                        adapter.notifyItemChanged(frgIngresoActualizarAsistencia.this.recyclerAsistencia.getChildAdapterPosition(view2));
+                        customDialog.hide();
+                    }
+                });
+                btnCancel.setOnClickListener(new View.OnClickListener() {
+                    public void onClick(View view) {
+                        customDialog.hide();
+                    }
+                });
+                customDialog.show();
             }
         });
         return vista;
